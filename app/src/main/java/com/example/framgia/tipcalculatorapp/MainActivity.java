@@ -2,21 +2,24 @@ package com.example.framgia.tipcalculatorapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.text.TextWatcher;
 import android.text.Editable;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText billAmountEditText;
     private EditText percentEditText;
     private EditText tipEditText;
     private EditText totalEditText;
+    private Button addButton;
+    private Button subButton;
     public float tip;
     public float total;
-    public float a;
-    public float b;
+    public float a = 0, b = 0;
 
 
     @Override
@@ -30,17 +33,31 @@ public class MainActivity extends AppCompatActivity {
         totalEditText = (EditText) findViewById(R.id.totalEditText);
 
         billAmountEditText.addTextChangedListener(textWatcher);
+        percentEditText.addTextChangedListener(textWatcher);
+
+        addButton = (Button) findViewById(R.id.addButton);
+        subButton = (Button) findViewById(R.id.subButton);
+
+        addButton.setOnClickListener(this);
+        subButton.setOnClickListener(this);
+        load_value_edit_text();
+        percent_tip();
+    }
 
 
-        a = Float.valueOf(billAmountEditText.getText().toString());
-        b = Float.valueOf(percentEditText.getText().toString());
-
-        tip = percent_tip(a,b);
-        total = tip*2;
-        tipEditText.setText(""+tip);
-        totalEditText.setText(""+total);
-
-
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.addButton:
+                b = b+1;
+                percent_tip();
+                break;
+            case R.id.subButton:
+                b = b-1;
+                percent_tip();
+                break;
+        }
+        percentEditText.setText(""+b);
     }
 
     TextWatcher textWatcher = new TextWatcher() {
@@ -57,19 +74,31 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            a = Float.valueOf(billAmountEditText.getText().toString());
-            b = Float.valueOf(percentEditText.getText().toString());
-
-            tip = percent_tip(a,b);
-            total = tip*2;
-            tipEditText.setText(""+tip);
-            totalEditText.setText(""+total);
-
+            load_value_edit_text();
+            percent_tip();
         }
     };
 
-    public float percent_tip(float a, float b){
-        return a*(b/100);
+    public void percent_tip(){
+        tip = a*(b/100);
+        total = tip*2;
+        tipEditText.setText(""+tip);
+        totalEditText.setText(""+total);
+    }
+
+    public void load_value_edit_text(){
+        try {
+            a = Float.parseFloat(billAmountEditText.getText().toString());
+        }
+        catch(NumberFormatException ex) {
+            a = 0;
+        }
+        try {
+            b = Float.parseFloat(percentEditText.getText().toString());
+        }
+        catch(NumberFormatException ex) {
+            b = 0;
+        }
     }
 
 }

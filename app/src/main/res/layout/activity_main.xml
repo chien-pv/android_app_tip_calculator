@@ -96,7 +96,7 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/add"
+            android:id="@+id/addButton"
             android:layout_width="50sp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/tipEditText"
@@ -104,11 +104,11 @@
             android:text="+" />
 
         <Button
-            android:id="@+id/sub"
+            android:id="@+id/subButton"
             android:layout_width="50sp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/tipEditText"
-            android:layout_toEndOf="@+id/add"
+            android:layout_toEndOf="@+id/addButton"
             android:text="-" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
