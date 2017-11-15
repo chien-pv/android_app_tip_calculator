@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.framgia.tipcalculatorapp.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/billAmountTexview "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="55dp"
+            android:text="Bill Amount"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/billAmountTexview "
+            android:layout_below="@+id/billAmountEditText"
+            android:layout_marginTop="39dp"
+            android:text="Percent"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tipEditText"
+            android:layout_alignBottom="@+id/tipEditText"
+            android:layout_alignStart="@+id/textView11"
+            android:text="Tip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView12"
+            android:layout_below="@+id/tipEditText"
+            android:layout_marginTop="60dp"
+            android:text="Total"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/billAmountEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="43dp"
+            android:layout_toEndOf="@+id/billAmountTexview "
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/bill_amount" />
+
+        <EditText
+            android:id="@+id/percentEditText"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView11"
+            android:layout_alignBottom="@+id/textView11"
+            android:layout_alignStart="@+id/billAmountEditText"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/tip_percent" />
+
+        <EditText
+            android:id="@+id/tipEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/percentEditText"
+            android:layout_below="@+id/percentEditText"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/totalEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView13"
+            android:layout_alignStart="@+id/tipEditText"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tipEditText"
+            android:layout_toEndOf="@+id/percentEditText"
+            android:text="+" />
+
+        <Button
+            android:id="@+id/sub"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tipEditText"
+            android:layout_toEndOf="@+id/add"
+            android:text="-" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
