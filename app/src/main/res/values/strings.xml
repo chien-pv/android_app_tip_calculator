@@ -2,4 +2,15 @@
     <string name="app_name">Tip Calculator App</string>
     <string name="bill_amount">30</string>
     <string name="tip_percent">20</string>
+    <string name="context_menu">Context menu</string>
+    <string name="popup_menu">Popup menu</string>
+    <string name="search_option_menu">Tìm kiếm</string>
+    <string name="settings_option_menu">Cài đặt</string>
+    <string name="about_option_menu">Giới thiệu</string>
+    <string name="copy_context_menu">Copy</string>
+    <string name="delete_context_menu">Delete</string>
+    <string name="share_context_menu">Share</string>
+    <string name="android_popup_menu">Khóa học lập trình Android</string>
+    <string name="ios_popup_menu">Khóa học lập trình IOS</string>
+    <string name="php_popup_menu">Khóa học lập trình PHP</string>
 </resources>

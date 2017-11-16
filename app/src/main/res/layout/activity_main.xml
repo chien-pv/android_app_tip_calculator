@@ -110,5 +110,23 @@
             android:layout_above="@+id/tipEditText"
             android:layout_toEndOf="@+id/addButton"
             android:text="-" />
+
+        <TextView
+            android:id="@+id/tv_context_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/totalEditText"
+            android:layout_marginTop="42dp"
+            android:layout_toEndOf="@+id/textView13"
+            android:text="ContextMenu" />
+
+        <TextView
+            android:id="@+id/tv_popup_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_context_menu"
+            android:layout_alignBottom="@+id/tv_context_menu"
+            android:layout_toStartOf="@+id/subButton"
+            android:text="Popup Menu" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

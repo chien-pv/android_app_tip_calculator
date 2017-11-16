@@ -7,8 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.text.TextWatcher;
 import android.text.Editable;
-
-
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.PopupMenu;
+import android.view.ContextMenu;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText billAmountEditText;
@@ -42,6 +47,92 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         subButton.setOnClickListener(this);
         load_value_edit_text();
         percent_tip();
+        
+        final TextView tvContextMenu = (TextView) findViewById(R.id.tv_context_menu);
+        tvContextMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registerForContextMenu(tvContextMenu);
+            }
+        });
+
+        final TextView tvPopupMenu = (TextView) findViewById(R.id.tv_popup_menu);
+
+        tvPopupMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Khởi tạo đối tượng
+                PopupMenu popupMenu = new PopupMenu(MainActivity.this, tvPopupMenu);
+                // inflate layout
+                popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+                // Đăng ký sự kiện click cho item menu
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.android:
+                                Toast.makeText(MainActivity.this, getString(R.string.android_popup_menu), Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.ios:
+                                Toast.makeText(MainActivity.this, getString(R.string.ios_popup_menu), Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.php:
+                                Toast.makeText(MainActivity.this, getString(R.string.php_popup_menu), Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                // Hiển thị menu
+                popupMenu.show();
+            }
+        });
+    }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.context_menu, menu);
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.copy:
+                Toast.makeText(MainActivity.this, getString(R.string.copy_context_menu), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.delete:
+                Toast.makeText(MainActivity.this, getString(R.string.delete_context_menu), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.share:
+                Toast.makeText(MainActivity.this, getString(R.string.share_context_menu), Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.option_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.search:
+                Toast.makeText(MainActivity.this, getString(R.string.search_option_menu), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.settings:
+                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.about:
+                Toast.makeText(MainActivity.this, getString(R.string.about_option_menu), Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
